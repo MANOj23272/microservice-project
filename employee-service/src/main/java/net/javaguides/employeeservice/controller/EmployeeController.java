@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.websocket.server.PathParam;
 import lombok.AllArgsConstructor;
+import net.javaguides.employeeservice.dto.ApiResponseDto;
 import net.javaguides.employeeservice.dto.EmployeeDto;
 import net.javaguides.employeeservice.service.EmployeeService;
 
@@ -28,8 +29,8 @@ public class EmployeeController {
 	}
 	
 	@GetMapping("{id}")
-	public ResponseEntity<EmployeeDto> getEmployee(@PathVariable("id")  Long id){
-		EmployeeDto getEmployee = employeeService.getEmployeeById(id);
-		return new ResponseEntity<EmployeeDto>(getEmployee,HttpStatus.OK);
+	public ResponseEntity<ApiResponseDto> getEmployee(@PathVariable("id")  Long id){
+		ApiResponseDto getEmployee = employeeService.getEmployeeById(id);
+		return new ResponseEntity<>(getEmployee,HttpStatus.OK);
 	}
 }
