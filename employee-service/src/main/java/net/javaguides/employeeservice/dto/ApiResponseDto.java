@@ -10,6 +10,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ApiResponseDto {
 
-	private DepartmentDto departmentDto;
 	private EmployeeDto employeeDto;
+	private DepartmentDto departmentDto;
+	private OrganizationDto organizationDto;
 }
