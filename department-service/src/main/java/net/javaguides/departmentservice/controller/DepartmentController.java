@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.websocket.server.PathParam;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,6 +24,14 @@ import net.javaguides.departmentservice.service.DepartmentService;
 public class DepartmentController {
 	
 	private DepartmentService departmentService;
+	@Operation(
+			summary = " save Department ",
+			description = "save Department ")
+	
+	@ApiResponse(
+			responseCode = "201",
+			description = "HTTP Status 201 CREATED"
+			)
 	
 	@PostMapping
 	public ResponseEntity<DepartmentDto> saveDepartment(@RequestBody  DepartmentDto departmentDto){
@@ -34,6 +44,16 @@ public class DepartmentController {
 //		DepartmentDto department = departmentService.getDepartment(departmentId);
 //		return new ResponseEntity<>(department,HttpStatus.OK);
 //	}
+	
+	@Operation(
+			summary = " get Department ",
+			description = "get Department ")
+	
+	@ApiResponse(
+			responseCode = "200",
+			description = "HTTP Status 200 CREATED"
+			)
+	
 	
 	@GetMapping("{department-Code}")
 	public ResponseEntity<DepartmentDto> getDepartmentByCode(@PathVariable("department-Code") String departmentCode){

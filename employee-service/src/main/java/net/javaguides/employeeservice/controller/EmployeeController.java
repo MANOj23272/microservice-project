@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.websocket.server.PathParam;
 import lombok.AllArgsConstructor;
 import net.javaguides.employeeservice.dto.ApiResponseDto;
@@ -21,12 +23,29 @@ import net.javaguides.employeeservice.service.EmployeeService;
 public class EmployeeController {
 
 	private EmployeeService employeeService;
+	@Operation(
+			summary = " save Employee ",
+			description = "save Employee ")
+	
+	@ApiResponse(
+			responseCode = "201",
+			description = "HTTP Status 201 CREATED"
+			)
 	
 	@PostMapping
 	public ResponseEntity<EmployeeDto> createEmployee(@RequestBody  EmployeeDto employeeDto){
 		EmployeeDto saveEmployee = employeeService.saveEmployee(employeeDto);
 		return new ResponseEntity<EmployeeDto>(saveEmployee,HttpStatus.CREATED);
 	}
+	
+	@Operation(
+			summary = " get Employee ",
+			description = "get Employee ")
+	
+	@ApiResponse(
+			responseCode = "200",
+			description = "HTTP Status 200 CREATED"
+			)
 	
 	@GetMapping("{id}")
 	public ResponseEntity<ApiResponseDto> getEmployee(@PathVariable("id")  Long id){
